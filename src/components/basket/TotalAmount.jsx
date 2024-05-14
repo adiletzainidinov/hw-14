@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const TotalAmount = () => {
+const TotalAmount = ({totalAmount = 0}) => {
   return (
     <Container>
       <StyledTotalAmount>Total Amount</StyledTotalAmount>
-      <TotalPrice>$123</TotalPrice>
+      <TotalPrice>${totalAmount}</TotalPrice>
     </Container>
   );
 };

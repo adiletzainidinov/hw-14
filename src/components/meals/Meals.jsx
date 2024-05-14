@@ -3,25 +3,25 @@ import styled from "styled-components";
 
 let meals = [
   {
-    id: new Date().toISOString(),
+    id: 'f0',
     title: "Sushi",
     description: "Finest fish and veggies",
     price: 22.99,
   },
   {
-    id: new Date().toISOString(),
+    id: 'f1',
     title: "Schnitzel",
     description: "A german specialty!",
     price: 16.0,
   },
   {
-    id: new Date().toISOString(),
+    id: 'f2',
     title: "Schnitzel",
     description: "A german specialty!",
     price: 12.99,
   },
   {
-    id: new Date().toISOString(),
+    id: 'f3',
     title: "Green Bowl",
     description: "Healthy...and green...",
     price: 19.99,
@@ -35,7 +35,7 @@ const Meals = () => {
         return (
           <MealItems
             key={index}
-            id={meal._id}
+            id={meal.id}
             title={meal.title}
             description={meal.description}
             price={meal.price}

@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import BasketButton from "./BasketButton";
-import { items } from "../../utils/general";
+import { useContext, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import BasketButton from './BasketButton';
+import { BasketContext } from '../store/BasketContext';
 
 const Header = ({ openModal }) => {
-  const [animationClass, setAnimationClass] = useState("");
+  // Global State
+  const {items} = useContext(BasketContext)
+
+  const [animationClass, setAnimationClass] = useState('');
   const calculateTotalAmount = () => {
     const sum = items.reduce((sum, item) => {
       return sum + item.amount;
@@ -13,9 +16,9 @@ const Header = ({ openModal }) => {
   };
 
   useEffect(() => {
-    setAnimationClass("bump");
+    setAnimationClass('bump');
     const id = setTimeout(() => {
-      setAnimationClass("");
+      setAnimationClass('');
 
       return () => {
         clearTimeout(id);

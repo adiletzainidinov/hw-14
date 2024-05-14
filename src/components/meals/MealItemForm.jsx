@@ -1,9 +1,11 @@
-import { useState } from "react";
-import Button from "../UI/Button";
-import PlusIcon from "../../assets/icons/plus.svg?react";
-import styled from "styled-components";
+import { useContext, useState } from 'react';
+import Button from '../UI/Button';
+import PlusIcon from '../../assets/icons/plus.svg?react';
+import styled from 'styled-components';
+import { BasketContext } from '../store/BasketContext';
 
-const MealItemForm = ({ id }) => {
+const MealItemForm = ({ id, title, price }) => {
+  const { addOrder } = useContext(BasketContext);
   const [amount, setAmount] = useState(1);
 
   const amountChangeHandler = (event) => {
@@ -11,6 +13,13 @@ const MealItemForm = ({ id }) => {
   };
   const submitHandler = (event) => {
     event.preventDefault();
+    const newOrder = {
+      amount: +amount,
+      id: id,
+      title,
+      price,
+    };
+    addOrder(newOrder);
   };
   return (
     <AddAmount onSubmit={submitHandler}>
@@ -20,8 +29,8 @@ const MealItemForm = ({ id }) => {
           value={amount}
           onChange={amountChangeHandler}
           type="number"
-          min={"1"}
-          max={"5"}
+          min={'1'}
+          max={'5'}
           id={id}
           defaultValue={1}
         />

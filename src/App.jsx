@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import Meals from "./components/meals/Meals";
 import Summary from "./components/summary/Summary";
 import styled from "styled-components";
+import { BasketProvider } from "./components/store/BasketContext";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,7 +14,7 @@ function App() {
   };
 
   return (
-    <>
+    <BasketProvider>
       <Header openModal={toggleVisibleBasket} />
       <Content>
         <Summary />
@@ -21,7 +22,7 @@ function App() {
       </Content>
 
       {isVisible && <Basket onClose={toggleVisibleBasket} />}
-    </>
+    </BasketProvider>
   );
 }
 
